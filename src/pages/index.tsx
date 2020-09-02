@@ -6,7 +6,7 @@ import 'antd/dist/antd.css';
 import styles from './index.less';
 interface Instate { };
 
-const List: React.SFC<Instate> = (props) => {
+const List: React.FC<Instate> = (props) => {
   const [isOpen, setOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<any>([]);
