@@ -25,7 +25,6 @@ const Listdemo: React.FC<Initstate> = (props) => {
             </List.Item>
           )
         }}
-
       />
     </Fragment>
   )
