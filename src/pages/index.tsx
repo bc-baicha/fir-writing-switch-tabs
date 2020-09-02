@@ -38,17 +38,23 @@ const List: React.SFC<Instate> = (props) => {
     }, 1000);
   }
 
+  //tabs回调
   const onCallback = (value: any) => {
     setKey(value);
+    const activeData: any = new Map([
+      ['all', setData(data.filter((item: any) => !item.finish))],
+      ['finish', setFinshdata(data.filter((item: any) => item.finish))],
+      ['unfinish', setunfinishData(data.filter((item: any) => !item.finish))],
+    ]);
+    activeData.set(value);
     loadingPublic();
   }
 
+  //删除
   const onDelete = (value: any, index: number) => {
     let testData = data;
     testData[index].finish = !testData[index].finish;
-    setFinshdata(testData.filter((item: any) => item.finish));
     setData(testData);
-    setunfinishData(testData.filter((item: any) => !item.finish));
     loadingPublic();
   }
 
