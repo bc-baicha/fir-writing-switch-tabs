@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react';
 import { List, Row, Col, Typography } from 'antd';
-import 'antd/dist/antd.css';
 import { DeleteOutlined } from '@ant-design/icons';
+import 'antd/dist/antd.css';
+const { Text } = Typography;
 interface Initstate {
   data: any,
   onDelete: Function
 };
-const { Text } = Typography;
+
 const Listdemo: React.FC<Initstate> = (props) => {
   const { data, onDelete } = props;
   return (

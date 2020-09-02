@@ -10,11 +10,12 @@ const List: React.SFC<Instate> = (props) => {
   const [isOpen, setOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<any>([]);
+  const [allData, setAlldata] = useState<any>([]);
   const [finishData, setFinshdata] = useState<any>([]);
   const [unfinishData, setunfinishData] = useState<any>([]);
   const [key, setKey] = useState<any>('all');
   enum changeData {
-    'all' = data,
+    'all' = allData,
     'finish' = finishData,
     'unfinish' = unfinishData
   }
@@ -29,6 +30,7 @@ const List: React.SFC<Instate> = (props) => {
       })
     }
     setData(demoData);
+    setAlldata(demoData);
   }, []);
 
   const loadingPublic = () => {
@@ -42,7 +44,7 @@ const List: React.SFC<Instate> = (props) => {
   const onCallback = (value: any) => {
     setKey(value);
     const activeData: any = new Map([
-      ['all', setData(data.filter((item: any) => !item.finish))],
+      ['all', setAlldata(data)],
       ['finish', setFinshdata(data.filter((item: any) => item.finish))],
       ['unfinish', setunfinishData(data.filter((item: any) => !item.finish))],
     ]);
@@ -54,7 +56,7 @@ const List: React.SFC<Instate> = (props) => {
   const onDelete = (value: any, index: number) => {
     let testData = data;
     testData[index].finish = !testData[index].finish;
-    setData(testData);
+    setAlldata(testData);
     loadingPublic();
   }
 
