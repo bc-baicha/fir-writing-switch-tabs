@@ -7,6 +7,7 @@ import styles from './index.less';
 interface Instate { };
 
 const List: React.FC<Instate> = (props) => {
+  document.title = 'Todolist';
   const [isOpen, setOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [data, setData] = useState<any>([]);
@@ -25,7 +26,7 @@ const List: React.FC<Instate> = (props) => {
     for (let i = 1; i < 5; i++) {
       demoData.push({
         id: i,
-        text: `test${i}`,
+        text: `demo${i}`,
         finish: false
       })
     }
@@ -61,25 +62,25 @@ const List: React.FC<Instate> = (props) => {
   }
 
   return (
-    <Fragment>
+    <div className={styles.mainWrap}>
       <div
         className={`${styles.wrap} ${isOpen ? styles.buttonRight : styles.buttonLeft}`}
         onClick={() => setOpen(!isOpen)}
       >
         <div className={`${styles.childWrap} ${isOpen ? styles.down : styles.open}`}></div>
       </div>
-
+      <div className={styles.titleWrap}>Todolist</div>
       <div className={styles.tabsWrap}>
         <Spin spinning={loading}>
           <Tabs defaultActiveKey="all" onChange={onCallback}>
             <TabPane tab="全部" key="all" />
-            <TabPane tab="完成" key="finish" />
-            <TabPane tab="未完成" key="unfinish" />
+            <TabPane tab="删除" key="finish" />
+            <TabPane tab="未删除" key="unfinish" />
           </Tabs>
           <Listitem data={changeData[key]} onDelete={onDelete} />
         </Spin>
       </div>
-    </Fragment>
+    </div>
   )
 }
 export default List;

@@ -20,7 +20,13 @@ const Listdemo: React.FC<Initstate> = (props) => {
             <List.Item>
               <Row style={{ width: '100%' }} justify='space-between'>
                 <Col><Text delete={item?.finish}>{item?.text ?? ''}</Text></Col>
-                <Col onClick={() => onDelete(item, index)}> <Text disabled={item?.finish}><DeleteOutlined /></Text></Col>
+                <Col onClick={() => onDelete(item, index)}>
+                  <Text>
+                    {
+                      item?.finish ? <span style={{ color: '#008000', cursor: 'pointer' }}>恢复</span> : <DeleteOutlined />
+                    }
+                  </Text>
+                </Col>
               </Row>
             </List.Item>
           )
